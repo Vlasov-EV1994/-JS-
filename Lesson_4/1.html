@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework lesson 4</title>
+</head>
+
+<body>
+    <!--
+       Написать функцию, преобразующую число в объект. Передавая на
+вход число в диапазоне [0, 999],
+мы должны получить на выходе объект, в котором в соответствующих свойствах описаны разряды числа:
+- единицы (в свойстве units)
+- десятки (в свойстве tens)
+- сотни (в свойстве hundereds)
+Например, для числа 45 мы должны получить следующий объект:
+{
+ units: 5, //это единицы
+ tens: 4, //это десятки
+ hundreds: 0, //это сотни
+}
+Если число было передано вне [0, 999] диапазона, не целое число или вообще не число,
+необходимо выдать соответствующее сообщение с помощью console.log и вернуть пустой объект.
+-->
+    <script>
+        "use strict";
+
+        function number(num) {
+            if (Number.isInteger(num)) {
+                if (num > 0 && num < 1000) {
+                    return {
+                        units: num % 10,
+                        tens: Math.trunc((num % 100) / 10),
+                        hundreads: Math.trunc(num / 100),
+                    };
+
+                } else {
+                    console.log('Не верное число!');
+                    return {};
+                }
+            } else {
+                console.log('Не число!');
+                return {};
+            }
+        }
+
+        console.log(number(123));
+        console.log(number(1));
+        console.log(number(999));
+        console.log(number(1000));
+        console.log(number(0));
+        console.log(number('fdwefw'));
+
+    </script>
+</body>
+
+</html>
